@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Tailwind</title>
-    <link href="css/output.css" rel = "stylesheet">
-    
+    <title>Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-    <h1 class="bg-red-400"> 
-        HELLO WORLD
-    </h1>
-    <p> daisy test</p>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500">
+
+    <!-- MENU PRINCIPAL -->
+    <div id="menu" class="text-center">
+        <h1 class="text-3xl font-bold text-white mb-6">Bienvenue</h1>
+        <div class="flex flex-col gap-4">
+            <button class="btn btn-primary text-lg" onclick="toggleCalculator()">Calculatrice</button>
+            <button class="btn btn-secondary text-lg">Quizz</button>
+            <button class="btn btn-accent text-lg">Contact</button>
+            <button class="btn btn-error text-lg">Autre</button>
+        </div>
+    </div>
+
+    <!-- CALCULATRICE (cachée par défaut) -->
+    <div id="calculator" class="hidden bg-white p-6 rounded-lg shadow-2xl w-96">
+        <div class="flex justify-between mb-4">
+            <button class="btn btn-outline btn-secondary" onclick="toggleCalculator()">⬅ Retour au Menu</button>
+            <button class="btn btn-outline btn-error" onclick="closeCalculator()">Quitter</button>
+        </div>
+
+        <h1 class="text-center text-2xl font-bold text-gray-800 mb-4">Calculatrice</h1>
+        
+        <input id="display" type="text" class="w-full text-right text-4xl p-4 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4" disabled>
+        
+        <div class="grid grid-cols-4 gap-4">
+            <button class="btn btn-outline btn-primary" onclick="clearDisplay()">C</button>
+            <button class="btn btn-outline btn-primary" onclick="deleteLast()">⌫</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('%')">%</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('/')">/</button>
+
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('7')">7</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('8')">8</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('9')">9</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('*')">*</button>
+
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('4')">4</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('5')">5</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('6')">6</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('-')">-</button>
+
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('1')">1</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('2')">2</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('3')">3</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('+')">+</button>
+
+            <button class="btn btn-outline btn-primary col-span-2" onclick="appendToDisplay('0')">0</button>
+            <button class="btn btn-outline btn-primary" onclick="appendToDisplay('.')">.</button>
+            <button class="btn btn-primary col-span-2" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script src="calculatrice.js"></script>
+
 </body>
 </html>
